@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BENTE - Contact Us</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">BENTEkenya</a>
+            </div>
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="index.html">Home</a></li>
+                    <li class="nav-item dropdown">
+                        <a href="#" class="dropbtn">Services <i class="fas fa-caret-down"></i></a>
+                        <div class="dropdown-content">
+                            <a href="index.html#interior-refurbishment">Car Interior Refurbishment</a>
+                            <a href="index.html#leather-transformation">Leather Seat Transformations</a>
+                            <a href="index.html#car-painting">Car Painting</a>
+                            <a href="index.html#other-repairs">Other Repairs & Refinements</a>
+                            <a href="book-service.html">Book Service</a>
+                            <a href="consultation.html">Consultation</a>
+                        </div>
+                    </li>
+                    <li class="nav-item"><a href="gallery.html">Gallery</a></li>
+                    <li class="nav-item"><a href="about-us.html">About Us</a></li>
+                    <li class="nav-item"><a href="contact.html">Contact</a></li>
+                    <li class="nav-item action-btn"><a href="book-service.html">Book A Service</a></li>
+                </ul>
+                <div class="hamburger-menu">
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="page-content">
+        <section class="form-section container">
+            <h1>Get in Touch with BENTE</h1>
+            <p class="form-description">Have a question, feedback, or special request? We'd love to hear from you. Fill out the form below or reach us directly using the contact details.</p>
+
+            <div class="contact-info-grid">
+                <div class="contact-card">
+                    <h3>Our Location</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> BENTEkenya Karen-Langata Rd, Nairobi, Kenya</p>
+                    <div class="map-placeholder">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3988.810570691507!2d36.79978641475398!3d-1.286389299066632!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zMTPCsDE3JzAyLjkiUyAzNsKwNDgnMDYuMiJF!5e0!3m2!1sen!2ske!4v1678912345678!5m2!1sen!2ske" width="100%" height="200" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                </div>
+                <div class="contact-card">
+                    <h3>Contact Details</h3>
+                    <p><i class="fas fa-phone"></i> Phone: +254 796 812 642</p>
+                    <p><i class="fas fa-envelope"></i> Email:bentekenya@gmail.com</p>
+                    <p><i class="fas fa-clock"></i> Business Hours:</p>
+                    <p>Mon - Fri: 9:00 AM - 6:00 PM</p>
+                    <p>Sat: 10:00 AM - 4:00 PM</p>
+                    <p>Sun: Closed</p>
+                </div>
+            </div>
+
+            <h2>Send Us a Message</h2>
+            <form class="contact-form" name="contact" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/success">
+                <p class="hidden">
+                    <label>Don’t fill this out if you’re human: <input name="bot-field" /></label>
+                </p>
+                <div class="form-group">
+                    <label for="contact-name">Your Name:</label>
+                    <input type="text" id="contact-name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="contact-email">Your Email:</label>
+                    <input type="email" id="contact-email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="contact-subject">Subject:</label>
+                    <input type="text" id="contact-subject" name="subject">
+                </div>
+                <div class="form-group">
+                    <label for="contact-message">Your Message:</label>
+                    <textarea id="contact-message" name="message" rows="7" required></textarea>
+                </div>
+                <button type="submit" class="btn primary-btn">Send Message</button>
+            </form>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col about-bente">
+                    <h3>About BENTEkenya</h3>
+                    <p>BENTE specializes in transforming vehicle aesthetics. From luxurious interior refurbishments and custom leather seat covers to precision car painting and detailed repairs, we bring your automotive vision to life. We are dedicated to craftsmanship and customer satisfaction, focusing on the art of automotive refinement.</p>
+                </div>
+                <div class="footer-col contact-info">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Karen-Langata Rd, Nairobi, Kenya</p>
+                    <p><i class="fas fa-phone"></i> +254 796 812 642</p>
+                    <p><i class="fas fa-envelope"></i> bentekenya@gmail.com</p>
+                </div>
+                <div class="footer-col services-links">
+                    <h3>Our Services</h3>
+                    <ul>
+                        <li><a href="index.html#interior-refurbishment">Car Interior Refurbishment</a></li>
+                        <li><a href="index.html#leather-transformation">Leather Seat Transformations</a></li>
+                        <li><a href="index.html#car-painting">Car Painting</a></li>
+                        <li><a href="index.html#other-repairs">Other Repairs & Refinements</a></li>
+                        <li><a href="book-service.html">Book a Service</a></li>
+                        <li><a href="consultation.html">Consultation</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col quick-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="about-us.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col social-media">
+                    <h3>Follow Us</h3>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.Instagramcom/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.twitter.com/" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.linkedin.com/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 BENTE. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+    <script src="js/script.js"></script>
+</body>
+</html>

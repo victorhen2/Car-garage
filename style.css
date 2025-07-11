@@ -1,0 +1,1733 @@
+/* General Body & Typography */
+:root {
+    --primary-color: #A0522D; /* Sienna - A warm, earthy tone for car interiors/leather */
+    --secondary-color: #4A4A4A; /* Dark grey for text */
+    --accent-color: #007BFF; /* A brighter accent for buttons/highlights */
+    --light-bg: #F8F8F8;
+    --dark-bg: #333;
+    --text-light: #FFF;
+    --text-dark: #333;
+    --border-color: #EEE;
+    --hero-overlay-color: rgba(0,0,0,0.6); /* Adjusted for readability over image */
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif; /* For headings and prominent text */
+    color: var(--text-dark);
+    line-height: 1.6;
+    background-color: var(--light-bg);
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Roboto', sans-serif; /* For body text and secondary headings */
+    margin-bottom: 15px;
+    color: var(--secondary-color);
+}
+
+a {
+    text-decoration: none;
+    color: var(--primary-color);
+}
+
+ul {
+    list-style: none;
+}
+
+.container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+/* Header & Navbar Styling */
+.main-header {
+    background-color: var(--dark-bg);
+    color: var(--text-light);
+    padding: 15px 0;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+
+.main-header .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.logo a {
+    color: var(--text-light);
+    font-size: 2em;
+    font-weight: 700;
+    letter-spacing: 2px;
+}
+
+.main-nav .nav-list {
+    display: flex;
+    align-items: center;
+}
+
+.nav-item {
+    margin-left: 30px;
+    position: relative; /* For dropdown positioning */
+}
+
+.nav-item a {
+    color: var(--text-light);
+    font-weight: 600;
+    padding: 10px 0;
+    transition: color 0.3s ease, border-bottom 0.3s ease;
+    border-bottom: 2px solid transparent; /* For hover effect */
+}
+
+.nav-item a:hover,
+.nav-item a.active { /* Add .active class via JS for current page */
+    color: var(--primary-color);
+    border-bottom-color: var(--primary-color);
+}
+
+/* Dropdown specific styles */
+.dropdown-content {
+    display: none; /* Hidden by default */
+    position: absolute;
+    background-color: var(--dark-bg); /* Match header background */
+    min-width: 220px;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.5);
+    z-index: 1;
+    border-radius: 5px;
+    overflow: hidden; /* Ensures rounded corners are applied */
+    top: 100%; /* Position right below the parent nav-item */
+    left: 0;
+    transform: translateY(10px); /* Slight initial offset for animation */
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+}
+
+.dropdown-content a {
+    color: var(--text-light);
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-align: left;
+    white-space: nowrap; /* Prevent wrapping for long service names */
+    font-weight: 400;
+    transition: background-color 0.3s ease, color 0.3s ease;
+    border-bottom: none; /* Override default nav-item border */
+}
+
+.dropdown-content a:hover {
+    background-color: var(--primary-color);
+    color: var(--text-light); /* Ensure text stays light on hover */
+}
+
+.nav-item.dropdown:hover .dropdown-content {
+    display: block; /* Show on hover for desktop */
+    opacity: 1;
+    visibility: visible;
+    transform: translateY(0);
+}
+
+/* Action Button in Navbar */
+.action-btn a {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    padding: 10px 20px;
+    border-radius: 5px;
+    margin-left: 20px;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+    border-bottom: none; /* Remove underline */
+}
+
+.action-btn a:hover {
+    background-color: #8B4513; /* Slightly darker Sienna */
+    transform: translateY(-2px);
+    border-bottom: none;
+}
+
+/* Hamburger Menu (Hidden on Desktop) */
+.hamburger-menu {
+    display: none; /* Hidden by default */
+    cursor: pointer;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 20px;
+}
+
+.hamburger-menu .bar {
+    width: 100%;
+    height: 3px;
+    background-color: var(--text-light);
+    border-radius: 2px;
+    transition: all 0.3s ease-in-out;
+}
+
+/* --- Hero Section Styling for appealing and intuitive look --- */
+.hero-section {
+    position: relative; /* Needed for positioning the ::before pseudo-element */
+    height: 600px; /* Consistent height as per your original file */
+    display: flex;
+    justify-content: space-between; /* Space out content and image */
+    align-items: center;
+    color: var(--text-light); /* Text color set for contrast */
+    text-align: left; /* Align text to the left */
+    padding: 0 50px; /* Adjust padding for content separation */
+    overflow: hidden; /* Important for background image transitions */
+}
+
+/* The background image and subtle overlay will be on a pseudo-element */
+.hero-section::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    /* Use your actual hero background image path here */
+    background-image: url('mit.jpeg'); /* 🌟 IMPORTANT: Replace with your chosen background image path and filename! */
+    background-size: cover;
+    background-position: center;
+    filter: brightness(0.6) grayscale(20%); /* Dim and slightly desaturate background for better contrast */
+    z-index: -1; /* Place it behind the content */
+    margin:7px ;
+    border-radius: 10px;
+}
+
+/* Hero Content (left side) */
+.hero-content {
+    flex: 1; /* Takes up available space on the left */
+    max-width: 50%; /* Limit width to ensure space for image */
+    padding-right: 30px; /* Space between text and image */
+    z-index: 1; /* Ensure text is above pseudo-element */
+}
+
+.hero-section h1 {
+    font-size: 3.5em;
+    margin-bottom: 20px;
+    color: var(--text-light); /* Ensure heading is white for contrast */
+    text-shadow: 2px 2px 6px rgba(0,0,0,0.9); /* Stronger shadow for readability on potentially busy background */
+    line-height: 1.2;
+}
+
+.hero-section p {
+    font-size: 1.3em;
+    margin-bottom: 40px;
+    max-width: 700px;
+    color: var(--text-light); /* Ensure paragraph is white for contrast */
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.9); /* Stronger shadow for readability */
+}
+
+.btn {
+    display: inline-block;
+    padding: 15px 30px;
+    border-radius: 5px;
+    font-weight: 600;
+    transition: background-color 0.3s ease, transform 0.2s ease;
+}
+
+.primary-btn {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    border: 2px solid var(--primary-color); /* Make button more prominent */
+}
+
+.primary-btn:hover {
+    background-color: #8B4513;
+    transform: translateY(-3px);
+    border-color: #8B4513;
+}
+
+.secondary-btn { /* New button style for about page CTA */
+    background-color: transparent;
+    color: var(--primary-color);
+    border: 2px solid var(--primary-color);
+    margin-left: 15px;
+}
+
+.secondary-btn:hover {
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    transform: translateY(-3px);
+}
+
+/* Hero Image Placeholder (right side) */
+.hero-image-placeholder {
+    flex: 1; /* Takes up available space on the right */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%; /* Occupy full height of hero section */
+    position: relative; /* For precise positioning of bouncing image */
+    z-index: 1; /* Ensure image is above pseudo-element */
+}
+
+.hero-image-placeholder .bouncing-image {
+    max-width: 100%; /* Ensure image fits */
+    max-height: 80%; /* Adjust max height relative to hero section */
+    object-fit: contain; /* Maintain aspect ratio */
+    position: absolute; /* Allow for vertical animation */
+    bottom: 0; /* Start from the bottom for a "bouncing up" effect */
+    animation: bounce 3s infinite alternate ease-in-out; /* Apply bounce animation */
+    /* Adjust these based on your actual image to prevent cut-offs */
+    transform: translateY(0); /* Initial position */
+}
+
+/* Keyframe animation for the bouncing effect */
+@keyframes bounce {
+    0% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-30px); /* Adjust height of the bounce */
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+
+/* Placeholder sections for visibility on index.html */
+.section-placeholder {
+    padding: 100px 20px;
+    text-align: center;
+    min-height: 300px; /* Reduced height as some content is now on separate pages */
+    border-bottom: 1px solid var(--border-color);
+}
+.section-placeholder:nth-of-type(even) {
+    background-color: var(--light-bg);
+}
+.section-placeholder:nth-of-type(odd) {
+    background-color: #FFF;
+}
+
+
+/* --- New Page Specific Styling --- */
+.page-content {
+    padding-top: 50px; /* Add space below header for non-hero pages */
+    padding-bottom: 50px;
+}
+
+/* Form Sections (Book Service, Consultation, Contact) */
+.form-section {
+    padding: 60px 20px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    margin-top: 30px;
+    margin-bottom: 30px;
+}
+
+.form-section h1 {
+    text-align: center;
+    font-size: 2.8em;
+    margin-bottom: 20px;
+    color: var(--primary-color);
+}
+
+.form-section h2 {
+    text-align: center;
+    font-size: 2em;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    color: var(--secondary-color);
+}
+
+.form-description {
+    text-align: center;
+    font-size: 1.1em;
+    color: var(--secondary-color);
+    margin-bottom: 40px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: 600;
+    color: var(--secondary-color);
+    text-align: center; /* Centered labels for smaller inputs */
+}
+
+/* Make inputs and selects smaller and centered */
+.form-group input[type="text"],
+.form-group input[type="email"],
+.form-group input[type="tel"],
+.form-group input[type="date"],
+.form-group input[type="time"],
+.form-group select {
+    width: 100%; /* Full width on small screens */
+    max-width: 450px; /* Max width on larger screens */
+    display: block; /* Ensures it takes its own line */
+    margin-left: auto; /* Centers the input */
+    margin-right: auto; /* Centers the input */
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    font-size: 1em;
+    font-family: 'Roboto', sans-serif;
+    color: var(--text-dark);
+    background-color: #fcfcfc;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+/* Make textareas a bit wider than single-line inputs, but also centered and limited */
+.form-group textarea {
+    width: 100%; /* Full width on small screens */
+    max-width: 600px; /* Max width on larger screens */
+    display: block; /* Ensures it takes its own line */
+    margin-left: auto; /* Centers the textarea */
+    margin-right: auto; /* Centers the textarea */
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 5px;
+    font-size: 1em;
+    font-family: 'Roboto', sans-serif;
+    color: var(--text-dark);
+    background-color: #fcfcfc;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: var(--primary-color);
+    box-shadow: 0 0 0 3px rgba(160, 82, 45, 0.2); /* Light primary color glow */
+    outline: none;
+}
+
+.form-section button[type="submit"] {
+    display: block; /* Make it a block element to center it */
+    margin: 20px auto 0 auto; /* Center the button */
+    width: auto; /* Allow button to size naturally */
+    min-width: 200px;
+    padding: 15px 30px;
+    cursor: pointer;
+    font-size: 1.1em;
+}
+
+/* Contact Page Specifics */
+.contact-info-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 30px;
+    margin-bottom: 60px;
+    text-align: left;
+}
+
+.contact-card {
+    background-color: var(--light-bg);
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+}
+
+.contact-card h3 {
+    color: var(--primary-color);
+    margin-bottom: 15px;
+    font-size: 1.5em;
+}
+
+.contact-card p {
+    color: var(--secondary-color);
+    margin-bottom: 10px;
+}
+
+.contact-card i {
+    color: var(--primary-color);
+    margin-right: 10px;
+}
+
+.map-placeholder {
+    height: 250px;
+    background-color: #e9e9e9;
+    border-radius: 5px;
+    margin-top: 20px;
+    overflow: hidden;
+}
+
+.map-placeholder iframe {
+    border-radius: 5px;
+}
+
+/* About Us Page Specifics */
+.about-hero {
+    background: url('images/about-hero-bg.jpg') no-repeat center center/cover; /* Placeholder background */
+    color: var(--text-light);
+    text-align: center;
+    padding: 100px 20px;
+    position: relative;
+}
+
+.about-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5); /* Dark overlay */
+    z-index: 0;
+}
+
+.about-hero .container {
+    position: relative;
+    z-index: 1;
+}
+
+.about-hero h1 {
+    font-size: 3.5em;
+    color: var(--text-light);
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+}
+
+.about-hero p {
+    font-size: 1.3em;
+    color: rgba(255,255,255,0.9);
+    max-width: 800px;
+    margin: 0 auto;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+}
+
+
+.about-intro {
+    display: flex;
+    align-items: center;
+    gap: 40px;
+    padding: 60px 20px;
+    background-color: #fff;
+    margin-top: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
+}
+
+.about-intro .about-content {
+    flex: 1;
+}
+
+.about-intro .about-content h2 {
+    font-size: 2.5em;
+    color: var(--primary-color);
+}
+
+.about-intro .about-image {
+    flex: 1;
+    text-align: center;
+}
+
+.about-intro .about-image .responsive-img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+}
+
+.about-mission-values {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 30px;
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.value-card {
+    background-color: #fff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+}
+
+.value-card h3 {
+    color:blanchedalmond;
+    font-size: 1.4em;
+    margin-bottom: 15px;
+}
+
+.value-card ul {
+    list-style: none;
+    padding: 0;
+    text-align: left; /* Align list items to left within card */
+    max-width: 80%; /* Constrain list width */
+    margin: 0 auto;
+}
+
+.value-card ul li {
+    margin-bottom: 8px;
+    color: var(--secondary-color);
+    position: relative;
+    padding-left: 20px;
+}
+
+.value-card ul li::before {
+    content: "\f00c"; /* FontAwesome check icon */
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    color: var(--primary-color);
+    position: absolute;
+    left: 0;
+    top: 0;
+}
+
+.call-to-action-short {
+    text-align: center;
+    padding: 60px 20px;
+    background-color: var(--primary-color);
+    color: var(--text-light);
+    margin-top: 40px;
+    border-radius: 8px;
+    margin-bottom: 30px;
+}
+
+.call-to-action-short h2 {
+    color: var(--text-light);
+    font-size: 2.5em;
+    margin-bottom: 30px;
+}
+
+/* Gallery Page Specifics */
+.gallery-hero {
+    background: url('mit.jpeg') no-repeat center center/cover; /* Placeholder background */
+    color: var(--text-light);
+    text-align: center;
+    padding: 100px 20px;
+    position: relative;
+}
+
+.gallery-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.5); /* Dark overlay */
+    z-index: 0;
+}
+
+.gallery-hero .container {
+    position: relative;
+    z-index: 1;
+}
+
+.gallery-hero h1 {
+    font-size: 3.5em;
+    color: var(--text-light);
+    margin-bottom: 15px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.8);
+}
+
+.gallery-hero p {
+    font-size: 1.3em;
+    color: rgba(255,255,255,0.9);
+    max-width: 800px;
+    margin: 0 auto;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+}
+
+.gallery-section {
+    padding: 60px 20px;
+    text-align: center;
+}
+
+.gallery-section h2 {
+    font-size: 2.5em;
+    margin-bottom: 40px;
+    color: var(--primary-color);
+}
+
+.gallery-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); /* Flexible grid */
+    gap: 25px;
+}
+
+.gallery-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover {
+    transform: translateY(-5px);
+}
+
+.gallery-item img {
+    width: 100%;
+    height: 250px; /* Fixed height for consistency */
+    object-fit: cover; /* Crop images to fit */
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover img {
+    transform: scale(1.05); /* Slightly zoom on hover */
+}
+
+.gallery-item .overlay {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    background-color: rgba(0,0,0,0.7);
+    color: var(--text-light);
+    padding: 15px;
+    font-size: 1.1em;
+    font-weight: 600;
+    transform: translateY(100%);
+    transition: transform 0.3s ease;
+}
+
+.gallery-item:hover .overlay {
+    transform: translateY(0);
+}
+
+.gallery-note {
+    margin-top: 50px;
+    font-size: 1.1em;
+    color: var(--secondary-color);
+}
+
+.gallery-note a {
+    font-weight: 600;
+}
+
+
+/* --- Footer Styling --- */
+.main-footer {
+    background-color: var(--dark-bg);
+    color: var(--text-light);
+    padding: 50px 0 20px; /* Top padding, no bottom padding for bottom bar */
+    margin-top: 50px;
+}
+
+.main-footer .footer-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); /* Responsive grid columns */
+    gap: 30px;
+    margin-bottom: 30px;
+}
+
+.main-footer .footer-col h3 {
+    color: var(--primary-color); /* Heading color */
+    margin-bottom: 20px;
+    font-size: 1.2em;
+    font-weight: 700;
+}
+
+.main-footer .footer-col p,
+.main-footer .footer-col ul li {
+    font-size: 0.95em;
+    line-height: 1.8;
+    color: rgba(255,255,255,0.7); /* Lighter text for readability */
+}
+
+.main-footer .footer-col ul {
+    padding-left: 0;
+}
+
+.main-footer .footer-col ul li a {
+    color: rgba(255,255,255,0.7);
+    transition: color 0.3s ease;
+}
+
+.main-footer .footer-col ul li a:hover {
+    color: var(--primary-color);
+}
+
+.main-footer .contact-info i {
+    margin-right: 10px;
+    color: var(--primary-color);
+}
+
+.main-footer .social-icons {
+    display: flex;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.main-footer .social-icons a {
+    color: var(--text-light);
+    font-size: 1.5em;
+    transition: color 0.3s ease, transform 0.2s ease;
+}
+
+.main-footer .social-icons a:hover {
+    color: var(--primary-color);
+    transform: translateY(-3px);
+}
+
+.main-footer .footer-bottom {
+    text-align: center;
+    padding-top: 20px;
+    border-top: 1px solid rgba(255,255,255,0.1);
+    color: rgba(255,255,255,0.5);
+    font-size: 0.85em;
+}
+
+
+/* Media Queries for Responsiveness (Mobile First) */
+@media (max-width: 768px) {
+    .main-nav {
+        position: fixed;
+        top: 0;
+        left: -100%; /* Hidden off-screen */
+        width: 70%;
+        height: 100%;
+        background-color: var(--dark-bg);
+        padding-top: 80px;
+        transition: left 0.3s ease-in-out;
+        z-index: 999;
+        overflow-y: auto; /* Enable scrolling for long menus */
+    }
+
+    .main-nav.active {
+        left: 0; /* Slide in */
+    }
+
+    .main-nav .nav-list {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .nav-item {
+        margin: 15px 0;
+        width: 100%;
+        text-align: left;
+    }
+
+    .nav-item a {
+        padding: 10px 20px;
+        display: block;
+        width: 100%;
+    }
+
+    .action-btn a {
+        margin-left: 0;
+        text-align: center;
+        width: auto;
+    }
+
+    .hamburger-menu {
+        display: flex; /* Show hamburger */
+    }
+
+    /* Dropdown for mobile */
+    .nav-item.dropdown .dropbtn {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .dropdown-content {
+        position: static; /* No absolute positioning for mobile dropdown */
+        box-shadow: none;
+        width: 100%;
+        min-width: unset;
+        background-color: rgba(0,0,0,0.2); /* Slightly lighter background for sub-items */
+        transform: translateY(0);
+        opacity: 1;
+        visibility: visible;
+        max-height: 0; /* Hidden by default for mobile, controlled by JS */
+        overflow: hidden;
+        transition: max-height 0.3s ease-out;
+    }
+
+    .dropdown-content.show {
+        max-height: 200px; /* Arbitrary max-height, ensure it's enough for all items */
+    }
+
+    .dropdown-content a {
+        padding-left: 40px; /* Indent sub-items */
+    }
+
+    /* Mobile Hero Section Adjustments */
+    .hero-section {
+        flex-direction: column; /* Stack content and image vertically */
+        padding: 80px 20px;
+        height: auto; /* Allow height to adjust */
+    }
+
+    .hero-content {
+        max-width: 100%;
+        padding-right: 0;
+        text-align: center; /* Center text on mobile */
+        margin-bottom: 40px; /* Space between text and image */
+    }
+
+    .hero-section h1 {
+        font-size: 2.5em; /* Smaller on mobile */
+    }
+
+    .hero-section p {
+        font-size: 1em; /* Smaller on mobile */
+    }
+
+    .hero-image-placeholder {
+        height: 250px; /* Give image a defined height on mobile */
+    }
+
+    .hero-image-placeholder .bouncing-image {
+        position: relative; /* Use relative positioning to keep it in flow */
+        width: 80%; /* Adjust size for mobile */
+        max-height: 100%;
+        transform: translateY(0) !important; /* Override animation for mobile if it looks bad */
+        animation: none; /* Disable animation on mobile for better performance/look */
+    }
+
+    /* Footer Mobile Adjustments */
+    .main-footer .footer-grid {
+        grid-template-columns: 1fr; /* Single column on mobile */
+        text-align: center;
+    }
+
+    .main-footer .social-icons {
+        justify-content: center; /* Center social icons */
+    }
+
+    /* New Page Mobile Adjustments */
+    .form-section {
+        padding: 30px 15px;
+    }
+
+    .form-section h1 {
+        font-size: 2em;
+    }
+
+    .form-section h2 {
+        font-size: 1.5em;
+    }
+
+    .form-description {
+        font-size: 0.9em;
+        margin-bottom: 30px;
+    }
+
+    .contact-info-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+    }
+
+    .map-placeholder {
+        height: 200px;
+    }
+
+    .about-intro {
+        flex-direction: column;
+        padding: 40px 15px;
+        text-align: center;
+    }
+
+    .about-intro .about-content,
+    .about-intro .about-image {
+        max-width: 100%;
+        padding-right: 0;
+    }
+
+    .about-intro .about-image {
+        margin-top: 30px;
+    }
+
+    .about-mission-values {
+        padding: 40px 15px;
+    }
+
+    .value-card ul {
+        max-width: 100%;
+        text-align: center; /* Center list items on mobile */
+        padding-left: 0; /* Remove padding for centering */
+    }
+
+    .value-card ul li {
+        padding-left: 0; /* Remove padding from list items for centering */
+    }
+
+    .value-card ul li::before {
+        position: static; /* Reset positioning to flow with text */
+        margin-right: 5px; /* Add space between icon and text */
+        display: inline-block; /* Make icon inline */
+    }
+
+    .call-to-action-short h2 {
+        font-size: 1.8em;
+    }
+
+    .call-to-action-short .btn {
+        display: block;
+        margin: 15px auto;
+    }
+}
+/* Add these styles to your style.css file */
+
+/* Make service-section a container for background images */
+.service-section {
+    position: relative;
+    overflow: hidden; /* Hide overflowing images */
+    padding: 100px 0; /* Adjust padding as needed, content will sit on top */
+    color: var(--text-dark); /* Default text color for content */
+    text-align: center;
+    background-color: var(--light-bg); /* Fallback background */
+    z-index: 1; /* Ensure content is above slideshow */
+}
+
+/* Styles for the background slideshow container */
+.background-slideshow {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1; /* Position behind the content */
+}
+
+/* Styles for individual slideshow images */
+.slideshow-image {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Cover the entire area without distortion */
+    opacity: 0; /* Hidden by default */
+    transition: opacity 1.5s ease-in-out; /* Smooth fade transition */
+    filter: brightness(0.6) grayscale(20%); /* Dim and slightly desaturate for readability */
+}
+
+/* Active image for the slideshow */
+.slideshow-image.active {
+    opacity: 1; /* Make the active image visible */
+}
+
+/* Styles for the content overlaying the slideshow */
+.service-content {
+    position: relative; /* Ensure content is above the slideshow */
+    z-index: 2; /* Higher z-index than the slideshow */
+    color: var(--text-light); /* Text color for readability over dark background */
+    text-shadow: 1px 1px 4px rgba(0,0,0,0.8); /* Add shadow for better contrast */
+    max-width: 800px; /* Constrain content width */
+    margin: 0 auto; /* Center content */
+    padding: 20px; /* Internal padding for content */
+}
+
+.service-content h2 {
+    font-size: 2.8em;
+    margin-bottom: 20px;
+    color: var(--text-light); /* Make heading white */
+}
+
+.service-content p {
+    font-size: 1.1em;
+    margin-bottom: 25px;
+    line-height: 1.7;
+}
+
+.service-content ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 30px;
+    text-align: center; /* Center the list items */
+}
+
+.service-content ul li {
+    font-size: 1em;
+    margin-bottom: 8px;
+    position: relative;
+    padding-left: 25px;
+    display: inline-block; /* Make list items inline-block to arrange horizontally */
+    margin-right: 20px; /* Space between items */
+}
+
+.service-content ul li::before {
+    content: "\f00c"; /* FontAwesome checkmark icon */
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    color: var(--primary-color);
+    position: absolute;
+    left: 0;
+    top: 3px;
+}
+
+.service-content .btn {
+    margin-top: 20px; /* Space above the button */
+}
+
+/* Media Queries for Responsiveness - specific adjustments for service-section */
+@media (max-width: 768px) {
+    .service-section {
+        padding: 60px 0; /* Adjust padding for mobile */
+    }
+
+    .service-content h2 {
+        font-size: 2em; /* Smaller heading on mobile */
+    }
+
+    .service-content p {
+        font-size: 0.95em;
+    }
+
+    .service-content ul li {
+        display: block; /* Stack list items vertically on mobile */
+        text-align: left;
+        margin-right: 0;
+    }
+}
+/* Leather Seat Transformation Section Styles */
+.leather-section {
+    padding: 80px 0; /* Adjusted padding */
+    background-color: #fff; /* A clean background for this section */
+    text-align: center;
+    color: var(--text-dark);
+}
+
+.leather-section h2 {
+    font-size: 2.8em;
+    margin-bottom: 20px;
+    color: var(--primary-color);
+}
+
+.leather-section .section-description {
+    font-size: 1.1em;
+    color: var(--secondary-color);
+    margin-bottom: 50px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.leather-comparison {
+    display: flex;
+    justify-content: center;
+    align-items: center; /* Align items vertically */
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    margin-bottom: 40px; /* Space above the button */
+}
+
+.leather-item {
+    position: relative;
+    width: 380px; /* Base width for each image container */
+    height: 300px; /* Fixed height for consistency */
+    overflow: hidden; /* Hide parts clipped by polygon */
+    box-shadow: 0 8px 25px rgba(0,0,0,0.2); /* Soft shadow for depth */
+    margin: 20px; /* Default margin between items */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background-color: var(--dark-bg); /* Fallback/background for transparency in polygon */
+}
+
+.leather-item:hover {
+    transform: translateY(-8px) scale(1.02); /* Slight lift and scale on hover */
+    box-shadow: 0 12px 30px rgba(0,0,0,0.3);
+}
+
+.leather-item .leather-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover; /* Cover the container */
+    display: block;
+    transition: transform 0.3s ease;
+}
+
+/* Polygon shapes for Before and After */
+.leather-item.leather-before .leather-image {
+    /* Polygon with a cut-out bottom-left corner */
+    clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 20% 100%);
+    transform: translateX(20px); /* Move slightly right to create crossing */
+    z-index: 2; /* Bring before image slightly forward */
+}
+
+.leather-item.leather-after .leather-image {
+    /* Polygon with a cut-out bottom-right corner */
+    clip-path: polygon(0% 0%, 100% 0%, 80% 100%, 0% 100%);
+    transform: translateX(-20px); /* Move slightly left to create crossing */
+    z-index: 1; /* Place after image slightly behind */
+}
+
+/* Adjustments for the "crossing" effect */
+.leather-item.leather-after {
+    margin-left: -80px; /* Negative margin to create overlap */
+    /* Ensure the z-index is lower than the before image to be 'behind' */
+    z-index: 1;
+}
+
+.leather-item.leather-before {
+    z-index: 2; /* Ensure 'before' image is on top where they overlap */
+}
+
+.leather-item .image-label {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: rgba(160, 82, 45, 0.9); /* Primary color with transparency */
+    color: var(--text-light);
+    padding: 8px 20px;
+    border-radius: 5px;
+    font-weight: 600;
+    font-size: 1.1em;
+    letter-spacing: 1px;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.3);
+    z-index: 3; /* Ensure label is always on top */
+}
+
+.leather-section .primary-btn {
+    margin-top: 40px; /* Space for the button below comparison */
+}
+
+/* Responsive Adjustments for Leather Section */
+@media (max-width: 900px) {
+    .leather-comparison {
+        flex-direction: column; /* Stack images vertically */
+        align-items: center; /* Center stacked items */
+    }
+
+    .leather-item {
+        width: 320px; /* Slightly smaller on medium screens */
+        height: 250px;
+        margin: 15px 0; /* Adjust margin for stacking */
+    }
+
+    /* Reset positioning for stacked elements to avoid overlap issues */
+    .leather-item.leather-before .leather-image,
+    .leather-item.leather-after .leather-image {
+        transform: translateX(0); /* Remove translate */
+    }
+
+    .leather-item.leather-after {
+        margin-left: 0; /* Remove negative margin */
+    }
+}
+
+@media (max-width: 500px) {
+    .leather-section h2 {
+        font-size: 2em;
+    }
+
+    .leather-section .section-description {
+        font-size: 1em;
+    }
+
+    .leather-item {
+        width: 100%; /* Full width on very small screens */
+        max-width: 300px; /* Keep max-width for smaller but not tiny images */
+        height: 220px;
+    }
+}
+/* Car Painting Section Styles (inspired by ert.png) */
+.car-painting-section {
+    position: relative; /* For absolute positioning of the image */
+    background-color: #1a1a1a; /* Very dark background */
+    color: var(--text-light); /* Light text for contrast */
+    padding: 100px 0; /* Vertical padding */
+    min-height: 550px; /* Ensure sufficient height */
+    overflow: hidden; /* Hide anything that goes outside */
+    display: flex; /* Use flexbox for layout */
+    align-items: center; /* Vertically center content */
+   
+}
+
+.car-painting-section .car-painting-container {
+    display: flex;
+    justify-content: space-between; /* Pushes content to left, image to right */
+    align-items: center; /* Vertically center items */
+    flex-wrap: wrap; /* Allow wrapping on smaller screens */
+    width: 100%; /* Take full width of parent container */
+    position: relative; /* Ensure it's above the image if needed */
+    z-index: 1; /* Keep content above the image */
+     margin-right: 7px;
+    border-radius: 12px;
+}
+
+.car-painting-content {
+    flex: 1; /* Take available space */
+    max-width: 55%; /* Limit content width on larger screens */
+    text-align: left;
+    padding-right: 30px; /* Space from the image */
+}
+
+.car-painting-content h2 {
+    font-size: 3em;
+    margin-bottom: 20px;
+    color: var(--text-light); /* Heading color */
+    line-height: 1.2;
+}
+
+.car-painting-content p {
+    font-size: 1.1em;
+    margin-bottom: 25px;
+    line-height: 1.7;
+    color: rgba(255,255,255,0.9); /* Slightly muted white */
+}
+
+.car-painting-content ul {
+    list-style: none;
+    padding: 0;
+    margin-bottom: 30px;
+    text-align: left;
+}
+
+.car-painting-content ul li {
+    font-size: 1em;
+    margin-bottom: 8px;
+    position: relative;
+    padding-left: 25px;
+    color: rgba(255,255,255,0.8);
+}
+
+.car-painting-content ul li::before {
+    content: "\f00c"; /* FontAwesome checkmark icon */
+    font-family: "Font Awesome 5 Free";
+    font-weight: 900;
+    color: var(--primary-color); /* Use primary accent color for checkmarks */
+    position: absolute;
+    left: 0;
+    top: 3px;
+}
+
+/* Backgroundless image placeholder positioning */
+.car-painting-image-wrapper {
+    position: absolute; /* Position relative to .car-painting-section */
+    bottom: 0;
+    right: 0;
+    width: 600px; /* Adjust size of the image container */
+    height: 450px; /* Adjust height of the image container */
+    z-index: 0; /* Place behind the content */
+    display: flex;
+    justify-content: flex-end; /* Align image to the right within its wrapper */
+    align-items: flex-end; /* Align image to the bottom within its wrapper */
+}
+
+.car-painting-image {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain; /* Ensures the whole image is visible without cropping */
+    display: block;
+}
+
+/* Responsive adjustments for Car Painting section */
+@media (max-width: 992px) {
+    .car-painting-content {
+        max-width: 65%; /* Give content more space on medium screens */
+    }
+
+    .car-painting-image-wrapper {
+        width: 450px;
+        height: 350px;
+    }
+}
+
+@media (max-width: 768px) {
+    .car-painting-section {
+        padding: 60px 0;
+        min-height: auto; /* Allow height to adjust */
+    }
+
+    .car-painting-section .car-painting-container {
+        flex-direction: column; /* Stack content and image vertically */
+        text-align: center;
+    }
+
+    .car-painting-content {
+        max-width: 100%; /* Full width for content */
+        padding-right: 0;
+        margin-bottom: 40px; /* Space between content and image */
+    }
+
+    .car-painting-content h2 {
+        font-size: 2.2em;
+    }
+
+    .car-painting-content ul {
+        text-align: left; /* Keep lists left-aligned even if heading is centered */
+        max-width: 300px; /* Constrain list width for better readability */
+        margin-left: auto;
+        margin-right: auto;
+    }
+
+    .car-painting-image-wrapper {
+        position: relative; /* Make it relative for normal flow */
+        bottom: auto;
+        right: auto;
+        width: 100%; /* Full width for image wrapper */
+        height: auto; /* Auto height */
+        margin-top: 30px; /* Space from content */
+        justify-content: center; /* Center image horizontally */
+        align-items: center; /* Center image vertically */
+    }
+
+    .car-painting-image {
+        max-width: 80%; /* Shrink image a bit on mobile */
+        height: auto;
+    }
+}
+
+@media (max-width: 576px) {
+    .car-painting-content h2 {
+        font-size: 1.8em;
+    }
+
+    .car-painting-content p {
+        font-size: 0.9em;
+    }
+}
+/* Other Repairs & Refinements Section Styles */
+.other-services-section {
+    padding: 80px 0;
+    background-color: var(--light-bg); /* Use a light background */
+    text-align: center;
+    color: var(--text-dark);
+}
+
+.other-services-section h2 {
+    font-size: 2.8em;
+    margin-bottom: 20px;
+    color: var(--primary-color);
+}
+
+.other-services-section .section-description {
+    font-size: 1.1em;
+    color: var(--secondary-color);
+    margin-bottom: 50px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.services-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); /* Flexible grid columns */
+    gap: 30px; /* Space between grid items */
+    margin-bottom: 40px; /* Space above the button */
+}
+
+.service-card {
+    background-color: #fff;
+    /* Remove padding to let image fill to edges, or adjust strategically */
+    /* padding: 30px; */ /* Consider if you want padding around the image part or only text */
+    border-radius: 10px; /* Slightly more rounded corners */
+    box-shadow: 0 5px 20px rgba(0,0,0,0.1); /* Softer shadow */
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    text-align: center;
+    overflow: hidden; /* Important to clip parts of the image that go beyond border-radius */
+    display: flex; /* Use flexbox for internal layout */
+    flex-direction: column; /* Stack image, heading, paragraph vertically */
+    justify-content: flex-start; /* Align content to the top */
+    align-items: center; /* Center content horizontally */
+}
+
+.service-card:hover {
+    transform: translateY(-10px); /* Lift effect on hover */
+    box-shadow: 0 12px 30px rgba(0,0,0,0.2); /* Enhanced shadow on hover */
+}
+
+/* New container for the image to control its aspect ratio and filling */
+.service-card-image-wrapper {
+    width: 100%; /* Make it fill the width of the card */
+    height: 180px; /* Fixed height for the image area */
+    margin-bottom: 20px; /* Space between image and text */
+    overflow: hidden; /* Crucial for clipping the image to this wrapper */
+    border-top-left-radius: 10px; /* Match card border radius for top corners */
+    border-top-right-radius: 10px;
+}
+
+.service-card .service-icon {
+    width: 100%; /* Make image fill its wrapper's width */
+    height: 100%; /* Make image fill its wrapper's height */
+    object-fit: cover; /* This is the key: makes the image fill and crop if needed */
+    display: block; /* Remove any extra space below image */
+    /* Removed margin-bottom and filter: drop-shadow as they are handled by wrapper/card */
+    filter: brightness(0.95); /* Slightly dim the image to make text overlay better if needed */
+    transition: transform 0.3s ease; /* Add transition for zoom effect on hover */
+}
+
+.service-card:hover .service-icon {
+    transform: scale(1.1); /* Slightly zoom in on hover */
+}
+
+/* Adjust padding for text content within the card, now that image fills top */
+.service-card h3,
+.service-card p {
+    padding: 0 20px; /* Add horizontal padding for text */
+}
+
+.service-card h3 {
+    font-size: 1.5em;
+    color: var(--secondary-color);
+    margin-top: 0; /* Reset default margin */
+    margin-bottom: 10px;
+}
+
+.service-card p {
+    font-size: 0.95em;
+    color: #666; /* Slightly lighter text for description */
+    line-height: 1.6;
+    margin-bottom: 20px; /* Space after paragraph */
+}
+
+/* Responsive Adjustments for Other Services Section */
+@media (max-width: 992px) {
+    .services-grid {
+        grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Adjust columns for medium screens */
+        gap: 20px;
+    }
+    .service-card-image-wrapper {
+        height: 160px; /* Adjust image wrapper height for smaller cards */
+    }
+}
+
+@media (max-width: 768px) {
+    .other-services-section {
+        padding: 60px 0;
+    }
+    .other-services-section h2 {
+        font-size: 2.2em;
+    }
+    .other-services-section .section-description {
+        font-size: 1em;
+        margin-bottom: 30px;
+    }
+    .services-grid {
+        grid-template-columns: 1fr; /* Single column on mobile */
+        gap: 25px;
+    }
+    .service-card {
+        padding: 0; /* Remove overall padding, use wrapper and text padding */
+    }
+    .service-card-image-wrapper {
+        height: 200px; /* Larger image height for single column */
+    }
+}
+
+@media (max-width: 480px) {
+    .service-card-image-wrapper {
+        height: 180px; /* Adjust height for very small screens */
+    }
+    .service-card h3 {
+        font-size: 1.3em;
+    }
+}
+/* Fully Repaired Car Showcase Section */
+.repaired-car-section {
+    padding: 80px 0;
+    background-color: var(--dark-bg); /* Dark background for contrast */
+    color: var(--text-light);
+    text-align: center;
+    overflow: hidden; /* Important for animation effects */
+}
+
+.repaired-car-section h2 {
+    font-size: 3em;
+    margin-bottom: 20px;
+    color: var(--primary-color); /* Highlight with primary color */
+}
+
+.repaired-car-section .section-description {
+    font-size: 1.1em;
+    color: rgba(255,255,255,0.9);
+    margin-bottom: 50px;
+    max-width: 800px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.repaired-car-image-container {
+    perspective: 1000px; /* For 3D transform effect */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 450px; /* Fixed height for the container */
+    margin: 0 auto;
+    max-width: 1000px; /* Limit container width */
+}
+
+.repaired-car-image {
+    max-width: 90%; /* Start slightly smaller */
+    height: auto;
+    display: block;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5); /* Stronger shadow for depth */
+    border-radius: 10px; /* Slightly rounded corners */
+    transition: transform 1s ease-out, max-width 1s ease-out; /* Smooth transition for effect */
+    /* Initial state for the "moving forward" effect */
+    transform: scale(0.8) translateY(20px);
+    opacity: 0.8;
+}
+
+/* Animation or effect to make it appear to move forward */
+/* You might trigger this with JavaScript when it enters the viewport,
+   but for now, we'll apply it directly or on hover for demonstration. */
+.repaired-car-image-container:hover .repaired-car-image {
+    transform: scale(1) translateY(0px); /* Scale up and move to original position */
+    opacity: 1;
+}
+
+/* If you want it to "move forward" on page load, uncomment and adjust this: */
+/* @keyframes moveForward {
+    from {
+        transform: scale(0.8) translateY(20px);
+        opacity: 0.8;
+    }
+    to {
+        transform: scale(1) translateY(0px);
+        opacity: 1;
+    }
+}
+
+.repaired-car-image {
+    animation: moveForward 1.5s ease-out forwards;
+} */
+
+
+/* Responsive Adjustments for Repaired Car Section */
+@media (max-width: 992px) {
+    .repaired-car-section h2 {
+        font-size: 2.5em;
+    }
+    .repaired-car-image-container {
+        height: 350px; /* Adjust height for medium screens */
+    }
+}
+
+@media (max-width: 768px) {
+    .repaired-car-section {
+        padding: 60px 0;
+    }
+    .repaired-car-section h2 {
+        font-size: 2em;
+    }
+    .repaired-car-section .section-description {
+        font-size: 1em;
+        margin-bottom: 30px;
+    }
+    .repaired-car-image-container {
+        height: 280px; /* Adjust height for mobile */
+    }
+    .repaired-car-image {
+        max-width: 95%; /* Allow image to be wider on small screens */
+    }
+}
+/* Brands Section Styles */
+.brands-section {
+    padding: 60px 0; /* Slightly less padding */
+    background-color: #f8f8f8; /* Light grey background */
+    text-align: center;
+    color: var(--text-dark);
+}
+
+.brands-section h2 {
+    font-size: 2.5em;
+    margin-bottom: 40px; /* Space below heading */
+    color: var(--primary-color);
+}
+
+.brand-logos-wrapper {
+    overflow-x: auto; /* Enable horizontal scrolling if content overflows */
+    -webkit-overflow-scrolling: touch; /* Smooth scrolling on iOS */
+    white-space: nowrap; /* Prevent logos from wrapping */
+    padding-bottom: 20px; /* Space for scrollbar */
+    scrollbar-width: thin; /* Firefox scrollbar */
+    scrollbar-color: var(--primary-color) #e0e0e0; /* Firefox scrollbar color */
+}
+
+/* Customize scrollbar for Webkit browsers */
+.brand-logos-wrapper::-webkit-scrollbar {
+    height: 8px;
+}
+
+.brand-logos-wrapper::-webkit-scrollbar-track {
+    background: #e0e0e0;
+    border-radius: 10px;
+}
+
+.brand-logos-wrapper::-webkit-scrollbar-thumb {
+    background: var(--primary-color);
+    border-radius: 10px;
+}
+
+.brand-logos-inner {
+    display: inline-flex; /* Keep logos in a single line */
+    align-items: center; /* Vertically center logos */
+    gap: 50px; /* Space between logos */
+    padding: 0 20px; /* Padding for the ends of the logo list */
+}
+
+.brand-logo {
+    height: 60px; /* Fixed height for all logos */
+    object-fit: contain; /* Ensure logo fits without distortion */
+    filter: grayscale(100%) brightness(0.8); /* Desaturated and slightly darker */
+    opacity: 0.7; /* Slightly transparent */
+    transition: filter 0.3s ease, opacity 0.3s ease, transform 0.3s ease; /* Smooth transition */
+    flex-shrink: 0; /* Prevent logos from shrinking */
+}
+
+.brand-logo:hover {
+    filter: grayscale(0%) brightness(1); /* Full color on hover */
+    opacity: 1; /* Fully opaque on hover */
+    transform: scale(1.05); /* Slight scale on hover */
+}
+
+.brand-nav-dots {
+    margin-top: 30px; /* Space above dots */
+    display: flex;
+    justify-content: center;
+    gap: 10px; /* Space between dots */
+}
+
+.brand-nav-dots .dot {
+    width: 10px;
+    height: 10px;
+    background-color: #ccc;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.brand-nav-dots .dot.active {
+    background-color: var(--primary-color); /* Active dot color */
+}
+
+/* Responsive Adjustments for Brands Section */
+@media (max-width: 768px) {
+    .brands-section {
+        padding: 40px 0;
+    }
+    .brands-section h2 {
+        font-size: 2em;
+        margin-bottom: 30px;
+    }
+    .brand-logos-inner {
+        gap: 30px; /* Less gap on smaller screens */
+        padding: 0 10px;
+    }
+    .brand-logo {
+        height: 50px; /* Smaller logos on mobile */
+    }
+}
+
+@media (max-width: 480px) {
+    .brand-logo {
+        height: 40px; /* Even smaller logos on very small screens */
+    }
+}
+/* Add this to your style.css */
+.success-page .form-section {
+    min-height: 400px; /* Ensure enough vertical space */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}

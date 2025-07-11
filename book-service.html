@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>BENTE - Book a Service</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&family=Roboto:wght@300;400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+</head>
+<body>
+
+    <header class="main-header">
+        <div class="container">
+            <div class="logo">
+                <a href="index.html">BENTE</a>
+            </div>
+            <nav class="main-nav">
+                <ul class="nav-list">
+                    <li class="nav-item"><a href="index.html">Home</a></li>
+                    <li class="nav-item dropdown">
+                        <a href="#" class="dropbtn">Services <i class="fas fa-caret-down"></i></a>
+                        <div class="dropdown-content">
+                            <a href="index.html#interior-refurbishment">Car Interior Refurbishment</a>
+                            <a href="index.html#leather-transformation">Leather Seat Transformations</a>
+                            <a href="index.html#car-painting">Car Painting</a>
+                            <a href="index.html#other-repairs">Other Repairs & Refinements</a>
+                            <a href="book-service.html">Book Service</a>
+                            <a href="consultation.html">Consultation</a>
+                        </div>
+                    </li>
+                    <li class="nav-item"><a href="gallery.html">Gallery</a></li>
+                    <li class="nav-item"><a href="about-us.html">About Us</a></li>
+                    <li class="nav-item"><a href="contact.html">Contact</a></li>
+                    <li class="nav-item action-btn"><a href="book-service.html">Book A Service</a></li>
+                </ul>
+                <div class="hamburger-menu">
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                </div>
+            </nav>
+        </div>
+    </header>
+
+    <main class="page-content">
+        <section class="form-section container">
+            <h1>Book a Service Appointment</h1>
+            <p class="form-description">Please fill out the form below to request a service appointment. Our team will contact you shortly to confirm the details.</p>
+            <!-- Netlify Form Integration: Added data-netlify, name, and netlify-honeypot attributes -->
+            <form class="service-form" name="book-service" method="POST" data-netlify="true" netlify-honeypot="bot-field" action="/success">
+                <!-- Hidden field for Netlify Honeypot -->
+                <p class="hidden">
+                    <label>Don’t fill this out if you’re human: <input name="bot-field" /></label>
+                </p>
+                <div class="form-group">
+                    <label for="name">Your Full Name:</label>
+                    <input type="text" id="name" name="name" required>
+                </div>
+                <div class="form-group">
+                    <label for="email">Your Email:</label>
+                    <input type="email" id="email" name="email" required>
+                </div>
+                <div class="form-group">
+                    <label for="phone">Your Phone Number:</label>
+                    <input type="tel" id="phone" name="phone">
+                </div>
+                <div class="form-group">
+                    <label for="service-type">Preferred Service Type:</label>
+                    <select id="service-type" name="service_type" required>
+                        <option value="">-- Select a Service --</option>
+                        <option value="interior-refurbishment">Car Interior Refurbishment</option>
+                        <option value="leather-transformation">Leather Seat Transformations</option>
+                        <option value="car-painting">Car Painting</option>
+                        <option value="other-repairs">Other Repairs & Refinements</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label for="car-details">Car Make, Model, Year (e.g., Toyota Camry 2018):</label>
+                    <input type="text" id="car-details" name="car_details">
+                </div>
+                <div class="form-group">
+                    <label for="description">Brief Description of Service Needed:</label>
+                    <textarea id="description" name="description" rows="5"></textarea>
+                </div>
+                <div class="form-group">
+                    <label for="preferred-date">Preferred Date:</label>
+                    <input type="date" id="preferred-date" name="preferred_date">
+                </div>
+                <div class="form-group">
+                    <label for="preferred-time">Preferred Time:</label>
+                    <input type="time" id="preferred-time" name="preferred_time">
+                </div>
+                <button type="submit" class="btn primary-btn">Submit Service Request</button>
+            </form>
+        </section>
+    </main>
+
+    <footer class="main-footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col about-bente">
+                    <h3>About BENTEkenya</h3>
+                    <p>BENTE specializes in transforming vehicle aesthetics. From luxurious interior refurbishments and custom leather seat covers to precision car painting and detailed repairs, we bring your automotive vision to life. We are dedicated to craftsmanship and customer satisfaction, focusing on the art of automotive refinement.</p>
+                </div>
+                <div class="footer-col contact-info">
+                    <h3>Contact Us</h3>
+                    <p><i class="fas fa-map-marker-alt"></i> Karen-Langata Rd, Nairobi, Kenya</p>
+                    <p><i class="fas fa-phone"></i> +254 796 812 642</p>
+                    <p><i class="fas fa-envelope"></i> bentekenya@gmail.com</p>
+                </div>
+                <div class="footer-col services-links">
+                    <h3>Our Services</h3>
+                    <ul>
+                        <li><a href="index.html#interior-refurbishment">Car Interior Refurbishment</a></li>
+                        <li><a href="index.html#leather-transformation">Leather Seat Transformations</a></li>
+                        <li><a href="index.html#car-painting">Car Painting</a></li>
+                        <li><a href="index.html#other-repairs">Other Repairs & Refinements</a></li>
+                        <li><a href="book-service.html">Book a Service</a></li>
+                        <li><a href="consultation.html">Consultation</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col quick-links">
+                    <h3>Quick Links</h3>
+                    <ul>
+                        <li><a href="index.html">Home</a></li>
+                        <li><a href="gallery.html">Gallery</a></li>
+                        <li><a href="about-us.html">About Us</a></li>
+                        <li><a href="contact.html">Contact</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                    </ul>
+                </div>
+                <div class="footer-col social-media">
+                    <h3>Follow Us</h3>
+                    <div class="social-icons">
+                        <a href="https://www.facebook.com/" target="_blank" aria-label="Facebook"><i class="fab fa-facebook-f"></i></a>
+                        <a href="https://www.Instagramcom/" target="_blank" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+                        <a href="https://www.twitter.com/" target="_blank" aria-label="Twitter"><i class="fab fa-twitter"></i></a>
+                        <a href="https://www.linkedin.com/" target="_blank" aria-label="LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>© 2025 BENTE. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="js/script.js"></script>
+</body>
+</html>
